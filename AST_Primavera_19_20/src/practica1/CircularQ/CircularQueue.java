@@ -39,7 +39,8 @@ public class CircularQueue<E> implements Queue<E> {
 
     @Override
     public boolean full() {
-        return this.hasFree(0);
+        //return this.hasFree(0);-->No funciona.
+        return numElem == N;
     }
 
     @Override
@@ -64,11 +65,12 @@ public class CircularQueue<E> implements Queue<E> {
     public E get() {
         E aux;
         if (this.empty()) {
-            throw new RuntimeException("The queue is empty");
+            throw new RuntimeException("Cannot 'get', the queue is empty");
         } else {
             aux = this.peekFirst();
             this.queue[head] = null;
             head = (head + 1) % N;
+            numElem--;
             return aux;
         }
     }
@@ -76,11 +78,12 @@ public class CircularQueue<E> implements Queue<E> {
     @Override
     public void put(E e) {
         if (this.full()) {
-            throw new RuntimeException("The queue is full");
+            throw new RuntimeException("Cannot 'put', the queue is full");
         }
         else {
             this.queue[tail]=e;
             tail = (tail+1) % N;
+            numElem++;
         }
     }
 
