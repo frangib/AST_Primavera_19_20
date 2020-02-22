@@ -95,20 +95,27 @@ public class CircularQueue<E> implements Queue<E> {
     class MyIterator implements Iterator {
 
         //Completar...
+        CircularQueue<E> queue = new CircularQueue<>(N);
         @Override
         public boolean hasNext() {
-            throw new RuntimeException("Aquest mètode s'ha de completar...");
-            
+            //return !queue.empty();
+            //FIXME: At this point in the test, numElem is 0 even if there is
+            //something in the queue.
+            System.out.println("Size: " + queue.size());
+            return queue.size() != 0;
         }
 
         @Override
         public E next() {
-            throw new RuntimeException("Aquest mètode s'ha de completar...");
+            //throw new RuntimeException("Aquest mètode s'ha de completar...");
+            return this.queue.peekFirst();
+            
         }
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            queue.get();
         }
 
     }

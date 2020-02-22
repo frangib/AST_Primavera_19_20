@@ -78,5 +78,34 @@ public class TestCQ {
         System.out.println("Empty? " + queue.empty());
         System.out.println("Full? " + queue.full());
         
+        /*
+        Same test using Iterator instead:
+        */
+        
+        System.out.println();
+        System.out.println("*****TEST WITH ITERATOR*****");
+        System.out.println();
+
+        Iterator iter = queue.iterator();
+        i = 1;
+        
+        System.out.println("Empty? " + queue.empty());
+        System.out.println("Has next? " + iter.hasNext());
+        System.out.println("WE PUT 3 ELEMENTS IN THE QUEUE");
+        queue.put(0);
+        queue.put(0);
+        queue.put(0);
+        System.out.println("Empty? " + queue.empty());
+        System.out.println("Has next? " + iter.hasNext());
+        
+        while(iter.hasNext()){
+            queue.put(i);
+            i++;
+        }
+        
+        System.out.println("Free: " + queue.free());
+        System.out.println("Empty? " + queue.empty());
+        System.out.println("Full? " + queue.full());
+        
     }
 }
