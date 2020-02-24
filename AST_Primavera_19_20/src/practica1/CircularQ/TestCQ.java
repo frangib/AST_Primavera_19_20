@@ -83,24 +83,17 @@ public class TestCQ {
         System.out.println("*****TEST WITH ITERATOR*****");
         System.out.println();
 
+        //Create(?) iterator object
         Iterator iter = queue.iterator();
-        //FIXME: After creating the iterator, the methos of the queue object
-        //cease to work properly. For example: full(), empty() and free() work fine
-        //but size() does not.
+        i = 0;
         
-        queue.put(0);
-        queue.put(1);
-        queue.put(2);
-        queue.put(3);
-        queue.put(4);
-        queue.put(5);
-        System.out.println("Size: " + queue.size());
-        System.out.println("Free: " + queue.free());
-        System.out.println("Empty? " + queue.empty());
-        System.out.println("Full? " + queue.full());
-        iter.remove();
-        iter.remove();
-        System.out.println("Size: " + queue.size());
+       //Fill the queue:
+        while(iter.hasNext()){
+            //do stuff
+        }
+        
+        
+        //TODO: Ask Alfonso Rojas
 
     }
 }
