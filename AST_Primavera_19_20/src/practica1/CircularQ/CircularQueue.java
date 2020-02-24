@@ -95,27 +95,28 @@ public class CircularQueue<E> implements Queue<E> {
     class MyIterator implements Iterator {
 
         //Completar...
-        CircularQueue<E> queue = new CircularQueue<>(N);
+        CircularQueue<E> q = new CircularQueue<>(N);
         @Override
         public boolean hasNext() {
-            //return !queue.empty();
             //FIXME: At this point in the test, numElem is 0 even if there is
-            //something in the queue.
-            System.out.println("Size: " + queue.size());
-            return queue.size() != 0;
+            //something in the queue when using the iterator. So none of the
+            //statements commented below work.
+            //return !queue.empty();
+            //return queue.size() != 0;
+            //return queue.hasFree(1);
+            
+            return !q.empty();
         }
-
         @Override
         public E next() {
             //throw new RuntimeException("Aquest mètode s'ha de completar...");
-            return this.queue.peekFirst();
-            
+            return this.q.peekFirst(); 
         }
 
         @Override
         public void remove() {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            queue.get();
+            q.get();
         }
 
     }
