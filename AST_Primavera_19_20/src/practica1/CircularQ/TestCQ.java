@@ -7,7 +7,7 @@ public class TestCQ {
     public static void main(String[] args) {
         //This is just an example.
         int N = 9;
-        int i;
+        int i = 0;
         CircularQueue<Integer> queue = new CircularQueue<>(N);
 
         System.out.println("Size: " + queue.size());
@@ -79,21 +79,34 @@ public class TestCQ {
         /*
          Same test using Iterator instead:
          */
+        
         System.out.println();
         System.out.println("*****TEST WITH ITERATOR*****");
         System.out.println();
 
-        //Create(?) iterator object
         Iterator iter = queue.iterator();
-        i = 0;
-        
-       //Fill the queue:
-        while(iter.hasNext()){
-            //do stuff
+
+         //**************FILL THE QUEUE***************
+        System.out.println();
+        System.out.println("NOW WE FILL THE QUEUE.");
+        System.out.println();
+
+        for (i = 0; i < N; i++) {
+            queue.put(i);
         }
         
+        /*
+        Iterate over the queue:
+        */
         
-        //TODO: Ask Alfonso Rojas
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
 
+        System.out.println("Free: " + queue.free());
+        System.out.println("Empty? " + queue.empty());
+        System.out.println("Full? " + queue.full());
+        
+        queue.hasFree(-5);
     }
 }

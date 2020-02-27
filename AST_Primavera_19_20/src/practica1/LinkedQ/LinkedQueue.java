@@ -7,21 +7,17 @@ public class LinkedQueue<E> implements Queue<E> {
 
     //Completar...
     private Node<E> firstNode;
-    private int numElems;
-    
-    public LinkedQueue(){
-        firstNode = null;
-        /*
-        Does the a linked queue need to have at least one node?
-        */
-        numElems = 0;
-    }
+    private Node<E> lastNode;
+    private int numElem;
 
+    public LinkedQueue() {
+        numElem = 0;
+    }
 
     @Override
     public int size() {
         //throw new RuntimeException("Aquest mètode s'ha de completar...");
-        return numElems;
+        return numElem;
     }
 
     @Override
@@ -39,14 +35,15 @@ public class LinkedQueue<E> implements Queue<E> {
     @Override
     public boolean empty() {
         //throw new RuntimeException("Aquest mètode s'ha de completar...");
-        return numElems == 0;
+        return numElem == 0;
     }
 
     @Override
     public boolean full() {
-        throw new RuntimeException("Aquest mètode s'ha de completar...");
+        //throw new RuntimeException("Aquest mètode s'ha de completar...");
         //Isn't this always false for a linked list?
-        //TODO
+        //By now we'll say that it always returns false;
+        return false;
     }
 
     @Override
@@ -58,26 +55,33 @@ public class LinkedQueue<E> implements Queue<E> {
     @Override
     public E peekLast() {
         //throw new RuntimeException("Aquest mètode s'ha de completar...");
-        int i;
-        Node<E> aux = firstNode;
-        //TODO: Most likely, this needs to be implemented using the iterator.
-        for(i = 0; i < numElems; i++){
-            aux = firstNode.getNext();
-        }
-        return aux.getValue();
+        return lastNode.getValue();
     }
 
     @Override
     public E get() {
         //throw new RuntimeException("Aquest mètode s'ha de completar...");
         Node<E> aux;
-        
-        
+        aux = firstNode;
+        numElem--;
+        firstNode = firstNode.getNext();
+        return aux.getValue();
+
     }
 
     @Override
     public void put(E value) {
-        throw new RuntimeException("Aquest mètode s'ha de completar...");
+        //throw new RuntimeException("Aquest mètode s'ha de completar...");
+        /*
+        Create node n to add.
+        Set new node n as the next node after lastNode.
+        Set n as lastNode.
+        Increase numElem;
+        */
+        Node n = new Node(value);
+        lastNode.setNext(n);
+        lastNode = n;
+        numElem++;
     }
 
     @Override
@@ -88,7 +92,8 @@ public class LinkedQueue<E> implements Queue<E> {
     class MyIterator implements Iterator {
 
         //Completar
-
+        Node<E> n;
+        
         @Override
         public boolean hasNext() {
             throw new RuntimeException("Aquest mètode s'ha de completar...");

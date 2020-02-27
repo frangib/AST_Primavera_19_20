@@ -81,7 +81,8 @@ public class CircularQueue<E> implements Queue<E> {
             throw new RuntimeException("Cannot 'put', the queue is full");
         }
         else {
-            this.queue[tail]=e;
+            
+            queue[tail]=e;
             tail = (tail+1) % N;
             numElem++;
         }
@@ -91,33 +92,35 @@ public class CircularQueue<E> implements Queue<E> {
     public Iterator<E> iterator() {
         return new MyIterator();
     }
-
+    //Note: iterator cannot alter the state of the queue because it's purpose
+    //it's just to iterate.
     class MyIterator implements Iterator {
 
         //Completar...
-        CircularQueue<E> q = new CircularQueue<>(N);
+        private int index = head;
+        private int count = 0;
+        
         @Override
         public boolean hasNext() {
-            //FIXME: At this point in the test, numElem is 0 even if there is
-            //something in the queue when using the iterator. So none of the
-            //statements commented below work.
-            //return !queue.empty();
-            //return queue.size() != 0;
-            //return queue.hasFree(1);
-            
-            return !q.empty();
+            //return !(index == tail);->index may not have been "returned"(?)
+            //yet so this wouldn't be wrong but would be imprecise.
+            return (count < numElem);
         }
         @Override
         public E next() {
             //throw new RuntimeException("Aquest mètode s'ha de completar...");
-            return this.q.peekFirst(); 
+            E aux = queue[index];
+            index = (index + 1)%N;
+            count++;
+            return aux;
         }
 
-        @Override
+        //Don't implement.
+        /*@Override
         public void remove() {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            q.get();
-        }
+            
+        }*/
 
     }
 }
