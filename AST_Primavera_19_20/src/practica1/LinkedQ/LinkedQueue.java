@@ -27,9 +27,10 @@ public class LinkedQueue<E> implements Queue<E> {
 
     @Override
     public boolean hasFree(int n) {
-        throw new RuntimeException("Aquest mètode s'ha de completar...");
+        //throw new RuntimeException("Aquest mètode s'ha de completar...");
         //Isn't this always true for a linked list?
-        //TODO
+        //TODO: Check if this is fine.
+        return true;
     }
 
     @Override
@@ -79,6 +80,10 @@ public class LinkedQueue<E> implements Queue<E> {
         Increase numElem;
         */
         Node n = new Node(value);
+        if(this.empty()){
+            firstNode = n;
+            lastNode = firstNode;
+        }
         lastNode.setNext(n);
         lastNode = n;
         numElem++;
@@ -92,18 +97,30 @@ public class LinkedQueue<E> implements Queue<E> {
     class MyIterator implements Iterator {
 
         //Completar
-        Node<E> n;
-        
+        Node<E> index = firstNode;
+        int count = 0;
         @Override
         public boolean hasNext() {
-            throw new RuntimeException("Aquest mètode s'ha de completar...");
+            //throw new RuntimeException("Aquest mètode s'ha de completar...");
+            /*TODO: by the same reasoning this might not be a valid solution for
+            CircularQueue, it might not be here either.
+            */
+            //return (index != lastNode);
+            return (count < numElem);
         }
 
         @Override
         public E next() {
-            throw new RuntimeException("Aquest mètode s'ha de completar...");
+            //throw new RuntimeException("Aquest mètode s'ha de completar...");
+            E aux = index.getValue();
+            index = index.getNext();
+            count++;
+            return aux;
         }
 
+        /* Alfonso told us not to implement it for CircularQueue so by now we 
+        won't implement it here either.
+        */
         @Override
         public void remove() {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
