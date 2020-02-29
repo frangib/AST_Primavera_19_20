@@ -36,7 +36,7 @@ public class TestLQ {
         System.out.println("*****************************");
         System.out.println("*Put 10 numbers in the queue*");
         System.out.println("*****************************");
-        for(i = 0 ;i < 10 ; i++){
+        for(i = 0 ;i < 5000 ; i++){
             queue.put(i);
         }
         System.out.println();
