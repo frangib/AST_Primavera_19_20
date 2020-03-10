@@ -29,7 +29,6 @@ public class LinkedQueue<E> implements Queue<E> {
     public boolean hasFree(int n) {
         //throw new RuntimeException("Aquest mètode s'ha de completar...");
         //Isn't this always true for a linked list?
-        //TODO: Check if this is fine.
         return true;
     }
 
@@ -102,10 +101,6 @@ public class LinkedQueue<E> implements Queue<E> {
         @Override
         public boolean hasNext() {
             //throw new RuntimeException("Aquest mètode s'ha de completar...");
-            /*TODO: by the same reasoning this might not be a valid solution for
-            CircularQueue, it might not be here either.
-            */
-            //return (index != lastNode);
             return (count < numElem);
         }
 

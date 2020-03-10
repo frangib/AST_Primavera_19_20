@@ -13,12 +13,10 @@ public class TSocketSend {
 
     public void sendData(byte[] data, int offset, int length) {
         //throw new RuntimeException("Aquest mètode s'ha de completar...");
-        //FIXME:ASK ALFONSO HOW TO INITIALIZE THE BYTE ARRAY.
-        byte[] aux = new byte[99999];
+        byte[] aux = new byte[length];
         TCPSegment seg = new TCPSegment();
         //arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
-        //TODO: Check what the destPos is. Is it the same offset?
-        System.arraycopy(data, offset, aux, offset, length);
+        System.arraycopy(data, offset, aux, 0, length);
         seg.setData(aux);
         channel.send(seg);
     }

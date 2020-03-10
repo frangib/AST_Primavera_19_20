@@ -116,11 +116,11 @@ public class CircularQueue<E> implements Queue<E> {
         }
 
         //Don't implement.
-        /*@Override
+        @Override
         public void remove() {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             
-        }*/
+        }
 
     }
 }

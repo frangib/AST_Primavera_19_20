@@ -29,9 +29,6 @@ public class QueueChannel implements Channel {
 
     @Override
     public int getMSS() {
-        //throw new UnsupportedOperationException("Not supported yet.");
-        //TODO: ASK ALFONO WHAT MSS SHOULD WE USE. By now we're going to use
-        //ipv6 MSS for testing.
-        return 1220;
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
